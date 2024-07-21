@@ -9,8 +9,16 @@
 # Return the resulting string.
 
 def verbing(s):
-    # +++your code here+++
-    return
+    if len(s) >=3:
+        if s.endswith ('ing'):
+           return s + "ly" 
+        else:
+          return s + "ing"
+    else:    
+         return(s)
+print(verbing("hail")) 
+print(verbing("swimming"))
+print(verbing("do"))
 
 
 # E. not_bad
@@ -23,8 +31,15 @@ def verbing(s):
 # This dinner is good!
 
 def not_bad(s):
-    # +++your code here+++
-    return
+    not_index = s.find("not")
+    bad_index = s.find("bad")
+    if not_index != -1 and bad_index != -1 and not_index < bad_index:
+         s = s[:not_index] + 'good' + s[bad_index + 3:]
+    return  s     
+print(not_bad("this dinner is not that bad!"))    
+print(not_bad("this movie is not that bad !"))
+print(not_bad("this tea is hot"))
+print(not_bad("it's good  "))
 
 
 # F. front_back
@@ -36,9 +51,18 @@ def not_bad(s):
 #  a-front + b-front + a-back + b-back
 
 def front_back(a, b):
-    # +++your code here+++
-    return
+    def split_half(s):
+        length = len(s)
+        half = (length + 1) // 2  # if odd, extra char goes to the front half
+        return s[:half], s[half:]
+    a_front, a_back = split_half(a)
+    b_front, b_back = split_half(b)
+        
+    return a_front + b_front + a_back + b_back
 
+print(front_back('abcd', 'xy'))     
+print(front_back('abcde', 'xyz'))   
+print(front_back('kitten', 'donut'))
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
